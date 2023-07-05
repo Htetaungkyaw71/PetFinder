@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState, useContext } from "react";
 import useBreedList from "../api/useBreedList";
@@ -5,8 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import FetchAnimals from "../api/fetchanimals";
 import TokenContext from "./TokenContext";
 import Results from "./Results";
+import ReactPaginate from "react-paginate";
 
-const Home = () => {
+const Home = ({ itemsPerPage }) => {
   let token = useContext(TokenContext);
   let sizes = ["small", "medium", "large", "xlarge"];
   let ages = ["baby", "young", "adult", "senior"];
@@ -33,8 +35,29 @@ const Home = () => {
     age: "",
     coat: "",
   });
+  let result = useQuery(["fetchanimals", data, token], FetchAnimals);
+  let pets = result?.data?.animals ?? [];
+  // Pagination
+  const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = pets.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(pets.length / itemsPerPage);
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % pets.length;
+    setItemOffset(newOffset);
+  };
 
-  let pets = useQuery(["fetchanimals", data, token], FetchAnimals);
+  // Pagination
+
+  if (result.isLoading) {
+    return (
+      <div className="loader-container">
+        <div className="loader">
+          <span>🌀</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -154,7 +177,19 @@ const Home = () => {
 
       <div>
         <h1 className="second-h1">Pet available for adoption nearby</h1>
-        <Results pets={pets?.data?.animals ?? []} />
+        <Results pets={currentItems} />
+        <div className="main-pagination">
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="&raquo;"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={2}
+            pageCount={pageCount}
+            previousLabel="&laquo;"
+            renderOnZeroPageCount={null}
+            className="pagination"
+          />
+        </div>
       </div>
       <div className="plan-container">
         <h1>Planning to adopt a pet?</h1>

@@ -107,6 +107,7 @@ option {
 
 .loader-container {
   text-align: center;
+  padding-top: 200px;
 }
 
 @keyframes loading {
@@ -143,4 +144,33 @@ option {
   margin-top: 10px;
   font-size: 15px;
   color: gainsboro;
+}
+
+.pagination {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.pagination li a {
+  cursor: pointer;
+  color: white;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  background-color: blueviolet;
+  margin: 0 4px;
+  margin-bottom: 10px;
 }

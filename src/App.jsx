@@ -48,7 +48,7 @@ function App() {
         <TokenContext.Provider value={token}>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home itemsPerPage={10} />} />
             <Route path="/details/:id" element={<Detail />} />
           </Routes>
         </TokenContext.Provider>

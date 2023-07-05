@@ -15,7 +15,7 @@ const FetchAnimals = async ({ queryKey }) => {
   if (gender) searchParams.set("gender", gender);
   if (breed) searchParams.set("breed", breed);
   if (coat) searchParams.set("coat", coat);
-  searchParams.set("limit", 10);
+  searchParams.set("limit", 100);
 
   // Add other non-empty query parameters as needed
 

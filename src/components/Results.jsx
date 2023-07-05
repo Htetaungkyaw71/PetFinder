@@ -4,11 +4,7 @@ import Pet from "./Pet";
 const Results = ({ pets }) => {
   if (pets.length === 0) {
     return (
-      <div className="loader-container">
-        <div className="loader">
-          <span>🌀</span>
-        </div>
-      </div>
+      <h1 style={{ textAlign: "center", marginTop: "20px" }}>No Pet Found</h1>
     );
   }
   console.log(pets);
