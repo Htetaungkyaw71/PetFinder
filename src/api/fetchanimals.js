@@ -15,11 +15,13 @@ const FetchAnimals = async ({ queryKey }) => {
   if (gender) searchParams.set("gender", gender);
   if (breed) searchParams.set("breed", breed);
   if (coat) searchParams.set("coat", coat);
+  searchParams.set("limit", 10);
 
   // Add other non-empty query parameters as needed
 
   url = url.split("?")[0] + "?" + searchParams.toString();
 
+  console.log(url);
   let res = await fetch(url, {
     headers: headers,
   });
