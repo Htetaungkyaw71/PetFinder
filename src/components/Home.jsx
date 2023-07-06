@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState, useContext } from "react";
@@ -7,6 +8,8 @@ import FetchAnimals from "../api/fetchanimals";
 import TokenContext from "./TokenContext";
 import Results from "./Results";
 import ReactPaginate from "react-paginate";
+import Articles from "./Articles";
+import Footer from "./Footer";
 
 const Home = ({ itemsPerPage }) => {
   let token = useContext(TokenContext);
@@ -195,28 +198,24 @@ const Home = ({ itemsPerPage }) => {
         <h1>Planning to adopt a pet?</h1>
         <div className="plan-row">
           <div className="plan-col">
-            <h2>Planning</h2>
+            <h3>Checklist for new adopters</h3>
+            <p>Help Make the transition, As smooth as possible</p>
+          </div>
+          <div className="plan-col">
+            <h3>Covid 19 Resources</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
               excepturi.
             </p>
           </div>
           <div className="plan-col">
-            <h2>Planning</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-              excepturi.
-            </p>
-          </div>
-          <div className="plan-col">
-            <h2>Planning</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-              excepturi.
-            </p>
+            <h3>Pet Adoption FQAs</h3>
+            <p>Get Ansewers to Questions You Haven't Thought Of</p>
           </div>
         </div>
       </div>
+      <Articles />
+      <Footer />
     </>
   );
 };
