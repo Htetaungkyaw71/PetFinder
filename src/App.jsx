@@ -49,7 +49,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home itemsPerPage={10} />} />
-            <Route path="/details/:id" element={<Detail />} />
+            <Route path="/details/:id" element={<Detail token={token} />} />
           </Routes>
         </TokenContext.Provider>
       </QueryClientProvider>

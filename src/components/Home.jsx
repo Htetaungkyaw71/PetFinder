@@ -10,6 +10,7 @@ import Results from "./Results";
 import ReactPaginate from "react-paginate";
 import Articles from "./Articles";
 import Footer from "./Footer";
+import logo from "../assets/logo.png";
 
 const Home = ({ itemsPerPage }) => {
   let token = useContext(TokenContext);
@@ -56,7 +57,9 @@ const Home = ({ itemsPerPage }) => {
     return (
       <div className="loader-container">
         <div className="loader">
-          <span>🌀</span>
+          <span>
+            <img src={logo} className="logo" alt="spinner" />
+          </span>
         </div>
       </div>
     );
@@ -178,7 +181,7 @@ const Home = ({ itemsPerPage }) => {
         </div>
       </div>
 
-      <div>
+      <div style={{ marginTop: "100px" }}>
         <h1 className="second-h1">Pet available for adoption nearby</h1>
         <Results pets={currentItems} />
         <div className="main-pagination">
@@ -194,6 +197,7 @@ const Home = ({ itemsPerPage }) => {
           />
         </div>
       </div>
+
       <div className="plan-container">
         <h1>Planning to adopt a pet?</h1>
         <div className="plan-row">

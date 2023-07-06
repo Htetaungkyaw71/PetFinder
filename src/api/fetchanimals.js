@@ -7,7 +7,7 @@ const FetchAnimals = async ({ queryKey }) => {
   };
 
   let url = `https://api.petfinder.com/v2/animals`;
-  // Remove empty query parameters
+
   const searchParams = new URLSearchParams();
   if (size) searchParams.set("size", size);
   if (age) searchParams.set("age", age);
@@ -16,8 +16,7 @@ const FetchAnimals = async ({ queryKey }) => {
   if (breed) searchParams.set("breed", breed);
   if (coat) searchParams.set("coat", coat);
   searchParams.set("limit", 100);
-
-  // Add other non-empty query parameters as needed
+  searchParams.set("special_needs", true);
 
   url = url.split("?")[0] + "?" + searchParams.toString();
 
