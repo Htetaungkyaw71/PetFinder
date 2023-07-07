@@ -78,7 +78,6 @@ const Home = ({ itemsPerPage }) => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                console.log("ok");
                 let formData = new FormData(e.target);
                 let obj = {
                   type: formData.get("type") ?? "",

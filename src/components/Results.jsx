@@ -7,7 +7,6 @@ const Results = ({ pets }) => {
       <h1 style={{ textAlign: "center", marginTop: "20px" }}>No Pet Found</h1>
     );
   }
-  console.log(pets);
 
   return (
     <div className="img-container">

@@ -264,19 +264,19 @@ option {
   padding: 20px;
   background-color: rgb(132, 0, 255);
   color: white;
-  margin-top: 40px;
+  margin-top: 109px;
 }
 
 .detail-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .detail-img-container {
   margin-left: 100px;
   margin-top: 30px;
+  text-align: center;
 }
 .detail-text-container {
   margin-left: 100px;
@@ -299,9 +299,88 @@ option {
   margin-top: 30px;
 }
 
+.c-image {
+  width: 150px;
+  height: 200px;
+  margin-top: 30px;
+  border-radius: 20px;
+}
+
+.carousel-smaller img {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  margin-top: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  text-align: center;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
+  border-radius: 20px;
+}
+
+.adoption-btn {
+  text-align: center;
+}
+
+.modal-content p {
+  font-size: 25px;
+}
+
+.adoption-btn button {
+  background-color: blueviolet;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: white;
+  border-radius: 13px;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* Mobile Responsive */
 
 @media screen and (max-width: 869px) {
+  .detail-container {
+    flex-direction: column;
+  }
+
   .detail-img-container {
     margin-left: 0px;
   }

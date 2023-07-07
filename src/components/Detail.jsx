@@ -4,11 +4,18 @@ import { useParams } from "react-router-dom";
 import FetchDetail from "../api/fetchDetail";
 import Footer from "./Footer";
 import logo from "../assets/logo.png";
+import Carousel from "./Carousel";
+import Modal from "./Model";
+import { useContext, useState } from "react";
+import TokenContext from "./TokenContext";
 
-const Detail = ({ token }) => {
-  console.log(token);
+const Detail = () => {
+  let token = useContext(TokenContext);
+  let [open, setOpen] = useState(false);
   const { id } = useParams();
+
   const results = useQuery(["detail", id, token], FetchDetail);
+
   if (results.isLoading) {
     return (
       <div className="loader-container">
@@ -30,7 +37,11 @@ const Detail = ({ token }) => {
     <>
       <div className="detail-container">
         <div className="detail-img-container">
-          <img src={hero} alt="pet" className="detail-pet" />
+          {pet.photos.length > 1 ? (
+            <Carousel images={pet.photos} />
+          ) : (
+            <img src={hero} alt="pet" className="detail-pet" />
+          )}
         </div>
         <div className="detail-text-container">
           <h1>{pet.name}</h1>
@@ -51,12 +62,29 @@ const Detail = ({ token }) => {
           <p style={{ marginTop: "10px", color: "gray", width: "600px" }}>
             {pet.description}
           </p>
-          <button
-            className="adopt-btn"
-            onClick={() => alert(`Thanks for adoption ${pet.name} `)}
-          >
+          <button className="adopt-btn" onClick={() => setOpen(true)}>
             Adopt {pet.name}
           </button>
+          {open && (
+            <Modal>
+              <div id="myModal" className="modal">
+                <div className="modal-content">
+                  <p>Are you sure adopt {pet.name} ?</p>
+                  <div className="adoption-btn">
+                    <button
+                      onClick={() => {
+                        setOpen(false);
+                        alert(`Thanks for adoption ${pet.name}`);
+                      }}
+                    >
+                      Yes
+                    </button>
+                    <button onClick={() => setOpen(false)}>No</button>
+                  </div>
+                </div>
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
       <Footer />
