@@ -11,7 +11,7 @@ A pet adoption website. Users can see pets and can search pet for adoption. User
 git clone git@github.com:Htetaungkyaw71/PetFinder.git
 ```
 ### Screenshot
-![This is an image](./realtor.png)
+![This is an image](./petfinder.png)
 
 ### Live demo
 
